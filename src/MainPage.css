@@ -1,83 +1,155 @@
-/* MainPage.css */
 .main-page {
-    background-color: #1a1a1a;
-    color: white;
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
-    overflow: hidden;
-    position: relative;
-  }
+  background-color: #1a1a1a;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  z-index: 0; /* Убираем все элементы на фоне */
+}
+
+/* Псевдоэлемент для фона с размытием */
+.main-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/public/photos/graffiti-115.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   
+  filter: blur(8px); /* Применяем блюр только к фону */
+  z-index: -1; /* Псевдоэлемент находится под контентом */
+}
+
+/* Другие стили остаются без изменений */
+.content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
+h1 {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  color: #ff0033;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.video-container {
+  flex: 0 0 30%;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
+.video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.7);
+}
+
+.graffiti {
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  width: 60%;
+  height: 60%;
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.rats-animations {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+}
+
+.rats-animations img {
+  width: 60px;
+  height: 60px;
+  animation: runRats 2s linear infinite;
+}
+
+@keyframes runRats {
+  0% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(100px);
+  }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
   .content {
-    position: relative;
-    display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
+    padding: 10px;
   }
-  
+
   h1 {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 3rem;
-    color: #ff0033;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    font-size: 2.5rem;
+    top: 10px;
   }
-  
+
   .video-container {
-    flex: 0 0 30%;
-    position: absolute;
-    right: 0;
-    z-index: 1;
+    flex: 0 0 80%;
+    margin-bottom: 20px;
   }
-  
-  .video {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.7);
-  }
-  
+
   .graffiti {
-    position: absolute;
-    top: 30%;
+    width: 80%;
+    height: 30%;
+    top: 60%;
     left: 10%;
-    width: 60%;
-    height: 60%;
-    /*background-image: url('path_to_graffiti_image'); Замените на путь к граффити */
-    background-size: cover;
-    opacity: 0.5;
   }
-  
-  .rats-animations {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 15px;
-  }
-  
+
   .rats-animations img {
-    width: 60px;
-    height: 60px;
-    animation: runRats 2s linear infinite;
+    width: 40px;
+    height: 40px;
   }
-  
-  @keyframes runRats {
-    0% {
-      transform: translateX(-100px);
-    }
-    100% {
-      transform: translateX(100px);
-    }
+}
+
+/* Адаптивность для мобильных устройств в портретной ориентации */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
   }
-  
+
+  .video-container {
+    flex: 0 0 100%;
+    margin-bottom: 10px;
+  }
+
+  .graffiti {
+    width: 90%;
+    height: 20%;
+    top: 70%;
+    left: 5%;
+  }
+
+  .rats-animations img {
+    width: 30px;
+    height: 30px;
+  }
+}
