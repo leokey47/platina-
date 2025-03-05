@@ -1,17 +1,22 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom"; // Импортируем роутер и компоненты
-import MainPage from "./MainPage"; // Импортируем MainPage
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import MainPage from './MainPage';
+import Page2 from './Page2';
+import Page3 from './Page3';
 
 function App() {
   return (
     <Router>
-      <Routes>
-        {/* Редирект на MainPage при загрузке */}
-        <Route path="/" element={<Navigate to="/main" />} />
-        
-        {/* Основной роут для MainPage */}
-        <Route path="/main" element={<MainPage />} />
-      </Routes>
+      <Navbar />
+      <main>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/page2" element={<Page2 />} />
+          <Route path="/page3" element={<Page3 />} />
+        </Routes>
+      </main>
     </Router>
   );
 }
