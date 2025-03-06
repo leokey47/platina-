@@ -4,9 +4,13 @@ import React from 'react';
 const Page2 = () => {
   return (
     <div>
-      <h1>Страница 2</h1>
+      <video className="background-video" autoPlay loop muted>
+        <source src="/photos/dov_back.mp4" type="video/mp4" />
+        Ваш браузер не поддерживает видео.
+      </video>
     </div>
   );
 };
 
 export default Page2;
+ 
