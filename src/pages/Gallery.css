@@ -4,7 +4,7 @@
     min-height: calc(100vh - 150px);
     padding: 30px 20px;
     background-color: var(--dark-bg);
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), var(--dark-bg)), url('../assets/images/gallery-bg.jpg');
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), var(--dark-bg)), url('https://example.com/placeholder-image.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

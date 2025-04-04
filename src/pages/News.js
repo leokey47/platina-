@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './News.css';
 
 // Импорт фонового изображения
-import newsBg from '../assets/images/rat_main.mp4';
+// import newsBg from 'https://example.com/placeholder-image.jpg';
 
 // Генерация фейковых новостей
 const initialPosts = [
@@ -162,7 +162,7 @@ const News = () => {
   };
   
   return (
-    <div className="news-container" style={{ backgroundImage: `url(${newsBg})` }}>
+    <div className="news-container" style={{ backgroundImage: `url()` }}>
       <div className="news-overlay">
         <div className="news-header">
           <h1 className="news-title">SOSA <span className="news-title-accent">NEWS</span></h1>

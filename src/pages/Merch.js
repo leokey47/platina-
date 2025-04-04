@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Merch.css';
 
 // Импорт изображений (в реальном проекте)
-import merchBg from '../assets/images/merch-bg.jpg';
+// import merchBg from 'https://example.com/placeholder-image.jpg';
 
 // Генерация фейковых данных о продуктах (в реальном проекте будет API)
 const products = [
@@ -316,7 +316,7 @@ const Merch = () => {
   };
   
   return (
-    <div className="merch-container" style={{ backgroundImage: `url(${merchBg})` }}>
+    <div className="merch-container" style={{ backgroundImage: `url()` }}>
       <div className="merch-overlay">
         <div className="merch-header">
           <h1 className="merch-title">SOSA <span className="drop-text">DROP</span></h1>

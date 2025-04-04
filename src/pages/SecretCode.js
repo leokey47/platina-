@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './SecretCode.css';
 
 // Импорт фонового изображения
-import secretBg from '../assets/images/secret-bg.jpg';
+// import secretBg from 'https://example.com/placeholder-image.jpg';
 
 // Данные для мини-игры
 const secretSymbols = [
@@ -190,7 +190,7 @@ const SecretCode = ({ secretMode }) => {
   };
   
   return (
-    <div className="secret-code-container" style={{ backgroundImage: `url(${secretBg})` }}>
+    <div className="secret-code-container" style={{ backgroundImage: `url()` }}>
       <div className="secret-overlay">
         {secretMode && (
           <div className="secret-mode-banner">

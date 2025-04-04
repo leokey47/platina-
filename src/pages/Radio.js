@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Radio.css';
 
-// Импорт изображений
-import radioImg from '../assets/images/radio-bg.jpg';
-import cassetteImg from '../assets/images/cassette.png';
+// // Импорт изображений
+// import radioImg from 'https://example.com/placeholder-image.jpg';
+// import cassetteImg from 'https://example.com/placeholder-image.jpg';
 
 // Фейковые треки (в реальном приложении здесь будут API-данные)
 const tracks = [
@@ -130,7 +130,7 @@ const Radio = () => {
   
   return (
     <div className="radio-container">
-      <div className="radio-background" style={{ backgroundImage: `url(${radioImg})` }}>
+      <div className="radio-background" style={{ backgroundImage: `url()` }}>
         <div className={`radio-player ${isGlitching ? 'glitching' : ''}`}>
           <div className="player-header">
             <h2>ГОБЛИН FM</h2>
@@ -139,7 +139,7 @@ const Radio = () => {
           
           <div className="cassette-container">
             <img 
-              src={cassetteImg} 
+              src={"cassetteImg"} 
               alt="Кассета" 
               className={`cassette ${isPlaying ? 'rotating' : ''}`} 
             />

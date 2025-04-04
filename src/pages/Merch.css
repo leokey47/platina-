@@ -460,7 +460,7 @@
     position: fixed;
     width: 40px;
     height: 20px;
-    background-image: url('../assets/images/rat.gif');
+    background-image: url('https://example.com/placeholder-image.jpg');
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 999;

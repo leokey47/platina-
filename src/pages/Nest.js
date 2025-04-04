@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './Nest.css';
 
-// Импорт изображений и аудио
-import bgImage from '../assets/images/nest-bg.jpg';
-import glitchOverlay from '../assets/images/glitch-overlay.png';
-import ratClickSound from '../assets/sounds/rat-click.mp3';
+// Заглушка для функции воспроизведения звука
+const playDummySound = () => {
+  console.log("Звук клика по крысе воспроизведен (заглушка)");
+};
 
 const Nest = ({ onRatClick }) => {
   const [rats, setRats] = useState([]);
@@ -41,10 +41,8 @@ const Nest = ({ onRatClick }) => {
   
   // Обработчик клика по крысе
   const handleRatClick = (id) => {
-    // Воспроизведение звука
-    const audio = new Audio(ratClickSound);
-    audio.volume = 0.3; // Тише звук
-    audio.play();
+    // Воспроизведение звука (заглушка)
+    playDummySound();
     
     // Вызываем функцию из App.js для отслеживания кликов
     if (onRatClick) {
@@ -80,8 +78,8 @@ const Nest = ({ onRatClick }) => {
   return (
     <div className="nest-container">
       {/* Основное изображение киберпанк-логова */}
-      <div className="nest-background" style={{ backgroundImage: `url(${bgImage})` }}>
-        <div className="glitch-overlay" style={{ backgroundImage: `url(${glitchOverlay})` }}></div>
+      <div className="nest-background">
+        <div className="glitch-overlay"></div>
         
         {/* Бегущие крысы */}
         {rats.map((rat) => (
@@ -118,7 +116,7 @@ const Nest = ({ onRatClick }) => {
           className="graffiti graffiti-3" 
           onClick={() => handleGraffitiClick(3)}
         >
-          PLTN
+          Платина
         </div>
         
         {/* Информационная панель для активного граффити */}

@@ -1,39 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
-// Импорт логотипа
-import logo from '../assets/images/pltn-logo.png';
-
 const Header = () => {
-  const [glitchActive, setGlitchActive] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  
-  // Эффект случайного глитча в логотипе
-  useEffect(() => {
-    const glitchInterval = setInterval(() => {
-      if (Math.random() > 0.7) {
-        setGlitchActive(true);
-        setTimeout(() => setGlitchActive(false), 200);
-      }
-    }, 2000);
-    
-    return () => clearInterval(glitchInterval);
-  }, []);
   
   return (
     <header className="header">
       <div className="header-container">
         <Link to="/" className="logo-container">
-          <img 
-            src={logo} 
-            alt="PLTN.LAIR" 
-            className={`logo ${glitchActive ? 'glitch-logo' : ''}`}
-          />
+          <div className="logo-placeholder"></div>
           <h1 className="site-title">PLTN.<span className="lair-text">LAIR</span></h1>
         </Link>
         
-        <div className="mobile-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+        <div 
+          className={`mobile-toggle ${menuOpen ? 'open' : ''}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -87,7 +70,6 @@ const Header = () => {
         </nav>
       </div>
       
-      {/* Киберпанк декоративная полоса */}
       <div className="cyber-bar">
         <div className="cyber-bar-text">
           ПЛАТИНА 300 ГОБЛИН ПЛАТИНА 300 ГОБЛИН ПЛАТИНА 300 ГОБЛИН

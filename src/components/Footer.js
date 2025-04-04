@@ -17,16 +17,16 @@ const Footer = () => {
           <h3>НАЙДИ НАС</h3>
           <div className="social-links">
             <a href="#" className="social-link" title="VK">
-              <i className="fab fa-vk"></i>
+              VK
             </a>
             <a href="#" className="social-link" title="Telegram">
-              <i className="fab fa-telegram"></i>
+              TG
             </a>
             <a href="#" className="social-link" title="Instagram">
-              <i className="fab fa-instagram"></i>
+              IG
             </a>
             <a href="#" className="social-link" title="YouTube">
-              <i className="fab fa-youtube"></i>
+              YT
             </a>
           </div>
         </div>
@@ -41,11 +41,11 @@ const Footer = () => {
         <p className="hidden-text">SECRET CODE: 3-0-0-G-0-8-L-1-N</p>
       </div>
       
-      {/* Случайные пробегающие крысы в футере */}
+      {/* Эмуляция крыс в футере с помощью текста вместо изображений */}
       <div className="footer-rats">
-        <div className="rat rat1"></div>
-        <div className="rat rat2"></div>
-        <div className="rat rat3"></div>
+        <div className="rat-text rat1">🐀</div>
+        <div className="rat-text rat2">🐀</div>
+        <div className="rat-text rat3">🐀</div>
       </div>
     </footer>
   );

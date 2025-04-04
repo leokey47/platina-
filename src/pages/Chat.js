@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './Chat.css';
 
 // Фоновое изображение
-import chatBg from '../assets/images/chat-bg.jpg';
+// import chatBg from 'https://example.com/placeholder-image.jpg';
 
 // Генерация фейковых сообщений чата
 const initialMessages = [
@@ -262,7 +262,7 @@ const Chat = () => {
   };
   
   return (
-    <div className={`chat-container ${isNightMode ? 'night-mode' : ''}`} style={{ backgroundImage: `url(${chatBg})` }}>
+    <div className={`chat-container ${isNightMode ? 'night-mode' : ''}`} style={{ backgroundImage: `url()` }}>
       <div className="chat-overlay">
         {!isLoggedIn ? (
           <LoginForm />
