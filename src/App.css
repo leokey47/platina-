@@ -1,49 +1,227 @@
-.App {
-  text-align: center;
+/* Основные стили для PLTN.LAIR */
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+:root {
+  --neon-green: #39ff14;
+  --neon-pink: #ff00ff;
+  --neon-blue: #00f2ff;
+  --dark-bg: #0a0a0a;
+  --darker-bg: #050505;
+  --rat-gray: #2a2a2a;
+  --text-glitch: #ff003c;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background-color: var(--dark-bg);
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  overflow-x: hidden;
+  position: relative;
 }
 
-.App-header {
-  background-color: #282c34;
+.app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: relative;
 }
 
-.App-link {
-  color: #61dafb;
+/* Эффект VHS для всего сайта */
+.app::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 100;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Секретный режим после кликов по крысам */
+.app.secret-mode {
+  background-color: var(--darker-bg);
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Эффект глюка для текста */
+.glitch-text {
+  position: relative;
+  color: var(--neon-green);
+  font-size: 2rem;
+  text-transform: uppercase;
+  animation: glitch 1s infinite;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--neon-pink);
+  animation: glitch-2 2s infinite;
+}
+
+.glitch-text::after {
+  left: -2px;
+  text-shadow: 2px 0 var(--neon-blue);
+  animation: glitch-3 3s infinite;
+}
+
+/* Неоновая кнопка */
+.neon-button {
+  background: transparent;
+  border: 2px solid var(--neon-green);
+  color: var(--neon-green);
+  padding: 10px 20px;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px var(--neon-green);
+}
+
+.neon-button:hover {
+  background-color: var(--neon-green);
+  color: black;
+  box-shadow: 0 0 20px var(--neon-green);
+}
+
+/* Ночной режим для чата */
+.night-mode .chat-container {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #ff0000;
+}
+
+/* Анимация крысы */
+.rat {
+  position: absolute;
+  width: 40px;
+  height: 20px;
+  background-image: url('./assets/images/rat.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: all;
+  cursor: pointer;
+  z-index: 10;
+  filter: brightness(0.8);
+  transition: all 0.2s;
+}
+
+.rat:hover {
+  filter: brightness(1.5);
+  transform: scale(1.2);
+}
+
+/* Секретная область */
+.secret-area {
+  background-color: var(--darker-bg);
+  border: 1px solid var(--neon-pink);
+  padding: 20px;
+  box-shadow: 0 0 20px var(--neon-pink);
+  margin: 20px;
+  animation: pulse 2s infinite;
+}
+
+.bonus-content {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: rgba(255, 0, 255, 0.1);
+  border-left: 3px solid var(--neon-pink);
+}
+
+.bonus-content h3 {
+  color: var(--neon-pink);
+  margin-bottom: 10px;
+}
+
+.bonus-content ul {
+  list-style-type: none;
+}
+
+.bonus-content li {
+  padding: 5px 0;
+  position: relative;
+  padding-left: 20px;
+}
+
+.bonus-content li::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  color: var(--neon-pink);
+}
+
+/* Анимации */
+@keyframes flicker {
+  0% { opacity: 0.95; }
+  50% { opacity: 1; }
+  100% { opacity: 0.95; }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes glitch-2 {
+  0% { transform: translate(0); }
+  30% { transform: translate(2px, -2px); }
+  60% { transform: translate(-2px, 2px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes glitch-3 {
+  0% { transform: translate(0); }
+  30% { transform: translate(-2px); }
+  60% { transform: translate(2px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px var(--neon-pink); }
+  50% { box-shadow: 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink); }
+  100% { box-shadow: 0 0 10px var(--neon-pink); }
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+  .content {
+    padding: 10px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .glitch-text {
+    font-size: 1.5rem;
   }
-}
-
-/* src/App.css */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
-
-main {
-  padding-top: 60px; /* Чтобы контент не был скрыт за navbar */
 }

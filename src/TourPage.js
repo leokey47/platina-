@@ -1,7 +1,7 @@
 // src/Page2.js
 import React from 'react';
 
-const Page2 = () => {
+const TourPage = () => {
   return (
     <div>
       <video className="background-video" autoPlay loop muted>
@@ -12,5 +12,5 @@ const Page2 = () => {
   );
 };
 
-export default Page2;
+export default TourPage;
  

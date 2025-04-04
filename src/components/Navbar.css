@@ -1,33 +1,206 @@
-/* src/components/Navbar.css */
-.navbar {
-    background-color: #333;
-    padding: 10px;
-    text-align: center;
+.header {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--neon-green);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  position: relative;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo {
+  height: 40px;
+  margin-right: 10px;
+  filter: drop-shadow(0 0 5px var(--neon-green));
+  transition: all 0.3s;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 10px var(--neon-green)) brightness(1.2);
+}
+
+.glitch-logo {
+  animation: logo-glitch 0.2s forwards;
+}
+
+.site-title {
+  font-family: 'VT323', monospace;
+  color: var(--neon-green);
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 5px var(--neon-green);
+}
+
+.lair-text {
+  color: var(--neon-pink);
+  text-shadow: 0 0 5px var(--neon-pink);
+}
+
+.main-nav {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--neon-green);
+  transition: width 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--neon-green);
+  text-shadow: 0 0 5px var(--neon-green);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  box-shadow: 0 0 10px var(--neon-green);
+}
+
+.nav-icon {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+  transition: transform 0.3s;
+}
+
+.nav-link:hover .nav-icon {
+  transform: scale(1.2);
+}
+
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.mobile-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--neon-green);
+  transition: all 0.3s;
+}
+
+/* Киберпанк-декоративная полоса */
+.cyber-bar {
+  height: 20px;
+  background-color: var(--darker-bg);
+  overflow: hidden;
+  border-top: 1px solid rgba(57, 255, 20, 0.3);
+  border-bottom: 1px solid rgba(57, 255, 20, 0.3);
+}
+
+.cyber-bar-text {
+  color: var(--neon-green);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+  text-shadow: 0 0 5px var(--neon-green);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes logo-glitch {
+  0% { transform: translate(0); filter: hue-rotate(0deg); }
+  20% { transform: translate(-2px, 2px); filter: hue-rotate(90deg); }
+  40% { transform: translate(-2px, -2px); filter: hue-rotate(180deg); }
+  60% { transform: translate(2px, 2px); filter: hue-rotate(270deg); }
+  80% { transform: translate(2px, -2px); filter: hue-rotate(360deg); }
+  100% { transform: translate(0); filter: hue-rotate(0deg); }
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 900px) {
+  .main-nav ul {
+    gap: 10px;
+  }
+  
+  .nav-link {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-toggle {
+    display: flex;
+    z-index: 101;
+  }
+  
+  .main-nav {
     position: fixed;
     top: 0;
-    width: 100%;
-    z-index: 1000;
+    right: -300px;
+    width: 250px;
+    height: 100vh;
+    background-color: var(--darker-bg);
+    border-left: 1px solid var(--neon-green);
+    box-shadow: -10px 0 20px rgba(0, 0, 0, 0.8);
+    padding: 80px 20px 20px;
+    transition: right 0.3s ease;
+    z-index: 100;
   }
   
-  .navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
+  .main-nav.open {
+    right: 0;
   }
   
-  .navbar li {
-    margin: 0 15px;
+  .main-nav ul {
+    flex-direction: column;
+    gap: 20px;
   }
   
-  .navbar a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
+  .mobile-toggle.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
   }
   
-  .navbar a:hover {
-    text-decoration: underline;
+  .mobile-toggle.open span:nth-child(2) {
+    opacity: 0;
   }
   
+  .mobile-toggle.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
